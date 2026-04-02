@@ -28,6 +28,8 @@ select * from DEPT;
 select * from EMP;
 
 --- INNER JOIN: Returns records that have matching values in both tables
+--- syntax: SELECT columns FROM table1 INNER JOIN table2 ON table1.column = table2.column;
+--- example:
 select * from EMP inner join DEPT on DEPT.DEPT_ID = EMP.DEPT_ID;
 
 --- using alias names for tables

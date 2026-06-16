@@ -94,6 +94,10 @@ select sum(marks) from student; --sum of all marks
 select avg(marks)  from student;  -- average of all marks
 select min(marks) from student; -- minimum marks
 select max(marks) from student;  -- maximum marks
+select Round(avg(marks),2) from student; -- average of marks with 2 decimal places
+select length(name),name from student; 
+select left(name,3) from student; -- it will give first 3 characters of name EX : Swaraj -- swa
+select right(name,3) from student; -- it will give last 3 characters of name EX : Swaraj -- raj
 
 -- group by clause in sql
 -- it is used to group the data based on one or more columns

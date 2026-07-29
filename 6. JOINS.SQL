@@ -146,7 +146,32 @@ from Employees E
 right join Departments D
 on E.DeptID = D.DeptID;
 
+--                --  or                    
+      
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+FULL JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- If I am having 3 tables with common column and I want to fetch data from all the tables then I will use join
+
+-- Inner Join: Returns records that have matching values in all tables
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID;
+
+
+-- Left Join: Returns all records from the left table (Orders), and the matched records from the right tables (Customers and Shippers). The result is NULL from the right side, if there is no match.
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM Orders
+LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID;
+
+-- Right Join: Returns all records from the right tables (Customers and Shippers), and the matched records from the left table (Orders). The result is NULL from the left side, when there is no match.
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM Orders
+RIGHT JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+RIGHT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID;
 

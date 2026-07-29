@@ -85,12 +85,25 @@ select * from student where marks > 80 order by marks desc; -- condition with or
 select * from student order by grade asc; -- order by grade in ascending order A to Z
 
 
+-- TOP and Limit
+SELECT TOP 50 PERCENT * FROM Customers WHERE Country = 'Germany';    -- returns the first 50% of records from the Customers table where the Country is Germany
+SELECT TOP 2 * FROM Customers WHERE Country = 'Germany';            -- returns the first 2 records from the Customers table where the Country is Germany
+SELECT TOP 3 * FROM Customers ORDER BY CustomerName DESC;              -- returns the first 3 records from the Customers table ordered by CustomerName in descending order
+                -- SAME AS LIMIT CLAUSE IN MYSQL
+SELECT * FROM Customers ORDER BY CustomerName DESC LIMIT 3;
+
+SELECT CustomerName, Address + ', ' + PostalCode + ' ' + City + ', ' + Country AS Address FROM Customers;
+-- This query concatenates the Address fields into a single column named Address
+-- example output:
+-- CustomerName | Address
+-- Alfreds        Futterkiste, 12209 Berlin, Germany
+
 -- aggregate functions in sql
 -- count() , sum() , avg() , min() , max()
 
-
 select count(*) from student; -- it will give the total number of rows present in the table
 select sum(marks) from student; --sum of all marks
+SELECT sum(price * quantity) FROM orderdetails -- total price of all orders
 select avg(marks)  from student;  -- average of all marks
 select min(marks) from student; -- minimum marks
 select max(marks) from student;  -- maximum marks

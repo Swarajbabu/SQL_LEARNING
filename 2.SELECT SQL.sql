@@ -85,12 +85,13 @@ select * from student where marks > 80 order by marks desc; -- condition with or
 select * from student order by grade asc; -- order by grade in ascending order A to Z
 
 
--- TOP and Limit
+-- TOP and Limit and Offset clauses are used to limit the number of rows returned by a query.
 SELECT TOP 50 PERCENT * FROM Customers WHERE Country = 'Germany';    -- returns the first 50% of records from the Customers table where the Country is Germany
 SELECT TOP 2 * FROM Customers WHERE Country = 'Germany';            -- returns the first 2 records from the Customers table where the Country is Germany
 SELECT TOP 3 * FROM Customers ORDER BY CustomerName DESC;              -- returns the first 3 records from the Customers table ordered by CustomerName in descending order
                 -- SAME AS LIMIT CLAUSE IN MYSQL
 SELECT * FROM Customers ORDER BY CustomerName DESC LIMIT 3;
+SELECT DISTINCT salary FROM Employee ORDER BY salary DESC LIMIT 1 OFFSET 1;  -- returns the second highest salary from the Employee table by ordering the salaries in descending order and skipping the first record (OFFSET 1) and limiting the result to 1 record (LIMIT 1).
 
 SELECT CustomerName, Address + ', ' + PostalCode + ' ' + City + ', ' + Country AS Address FROM Customers;
 -- This query concatenates the Address fields into a single column named Address
@@ -134,3 +135,7 @@ select city,grade ,count(rollno) as city_grade_wise_count from student group by 
 
 -- city wise average marks having average marks greater than 80 using having clause
 select city, avg(marks) from student group by city having avg(marks)>80;
+
+
+
+SELECT DISTINCT salary FROM Employee ORDER BY salary DESC LIMIT 1 OFFSET 1;

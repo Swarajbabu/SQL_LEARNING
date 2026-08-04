@@ -153,6 +153,55 @@ FROM Customers
 FULL JOIN Orders
 ON Customers.CustomerID = Orders.CustomerID;
 
+-- Self join: Returns records that have matching values in the same table same table is joing the same table
+SELECT E1.EmpName AS Employee, E2.EmpName AS Manager
+FROM Employees E1
+LEFT JOIN Employees E2 
+ON E1.EmpID = E2.DeptID;
+
+
+-- Union: Combines the result sets of two or more SELECT statements  Unique values only
+SELECT City, Country FROM Customers
+WHERE Country='Germany'
+UNION
+SELECT City, Country FROM Suppliers
+WHERE Country='Germany'
+ORDER BY City;
+
+-- Union All: Combines the result sets of two or more SELECT statements including duplicates
+SELECT Country FROM Customers
+UNION ALL
+SELECT Country FROM Suppliers
+ORDER BY Country;
+
+-- Exists: Returns true if the subquery returns one or more records
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (
+  SELECT ProductName
+  FROM Products
+  WHERE Products.SupplierID = Suppliers.supplierID AND Price < 10
+);
+
+-- Any: Returns true if any of the subquery values meet the condition
+--  Comparison operators can be used with ANY: =, !=, <, <=, >, >= is important to use with ANY
+SELECT *
+FROM Employee
+WHERE salary < ANY (
+    SELECT salary
+    FROM SalaryTable
+);
+
+-- All: Returns true if all of the subquery values meet the condition
+-- Comparison operators can be used with ALL: =, !=, <, <=, >, >= is important to use with ALL
+SELECT *
+FROM Employee
+WHERE salary > ALL (
+    SELECT salary
+    FROM SalaryTable
+);
+
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- If I am having 3 tables with common column and I want to fetch data from all the tables then I will use join
 
@@ -169,9 +218,19 @@ FROM Orders
 LEFT JOIN Customers ON Orders.CustomerID = Customers.CustomerID
 LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID;
 
+
 -- Right Join: Returns all records from the right tables (Customers and Shippers), and the matched records from the left table (Orders). The result is NULL from the left side, when there is no match.
 SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
 FROM Orders
 RIGHT JOIN Customers ON Orders.CustomerID = Customers.CustomerID
 RIGHT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID;
+
+
+-- Full Join: Returns all records when there is a match in either left (Orders) or right (Customers and Shippers) table records
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM Orders
+FULL JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+FULL JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID;
+
+
 

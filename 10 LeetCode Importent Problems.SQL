@@ -83,3 +83,12 @@ WHERE id IN (
     GROUP BY managerId
     HAVING COUNT(*) >= 5
 );
+
+-- 602. Friend Requests II: Who Has the Most Friends
+select requester_id as id ,count(*) as num from (
+    select requester_id from RequestAccepted
+    union all
+    select accepter_id from RequestAccepted
+) as t
+group by requester_id order by num desc limit 1;
+

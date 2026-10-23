@@ -42,7 +42,7 @@ select rollno,name,grade from student;
 select * from student where city="Delhi";
 
 -- to select data with condition on marks we called where clause
-select * from student where marks>80;
+select * from student where marks > 80;
 
 -- to select data with multiple conditions we use AND , OR operators
 select * from student where marks>=85 and city="Mumbai";

@@ -12,7 +12,7 @@ WHERE Country = 'USA';
 -- Case statement: Used to create conditional logic in SQL queries
 SELECT ProductName, Price,
 CASE
-  WHEN Price < 20 THEN 'Low Cost'
+  WHEN Price < 20 THEN 'Low Cost' 
   WHEN Price BETWEEN 20 AND 50 THEN 'Medium Cost'
   ELSE 'High Cost'
 END AS PriceCategory

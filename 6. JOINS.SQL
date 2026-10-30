@@ -30,16 +30,20 @@ select * from EMP;
 --- INNER JOIN: Returns records that have matching values in both tables
 --- syntax: SELECT columns FROM table1 INNER JOIN table2 ON table1.column = table2.column;
 --- example:
-select * from EMP inner join DEPT on DEPT.DEPT_ID = EMP.DEPT_ID;
+select * from EMP 
+inner join DEPT on DEPT.DEPT_ID = EMP.DEPT_ID;
 
 --- using alias names for tables
-select * from EMP as E inner join DEPT as D on D.DEPT_ID = E.DEPT_ID;
+select * from EMP as E 
+inner join DEPT as D on D.DEPT_ID = E.DEPT_ID;
 
 --- left JOIN: Returns all records from the left table (EMP), and the matched records from the right table (DEPT). The result is NULL from the right side, if there is no match.
-select * from EMP left join dept on Dept.DEPT_ID = emp.dept_id;
+select * from EMP 
+left join dept on Dept.DEPT_ID = emp.dept_id;
 
 --- right JOIN: Returns all records from the right table (DEPT), and the matched records from the left table (EMP). The result is NULL from the left side, when there is no match.
-select * from emp right join dept on Dept.DEPT_ID = emp.dept_id;
+select * from emp 
+right join dept on Dept.DEPT_ID = emp.dept_id;
 
 --- FULL JOIN: Returns all records when there is a match in either left (EMP) or right (DEPT) table records
 --- Note: FULL JOIN is not directly supported in MySQL, but can be achieved using UNION of LEFT JOIN and RIGHT JOIN
@@ -53,7 +57,6 @@ RIGHT JOIN SALARY ON EMP.EMP_ID = SALARY.EMP_ID;
 
 --- SELF JOIN: A self join is a regular join, but the table is joined with itself.
 SELECT * from EMP as E join  as E on E1
-
 
 
 

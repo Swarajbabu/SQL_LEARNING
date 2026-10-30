@@ -93,6 +93,9 @@ SELECT TOP 3 * FROM Customers ORDER BY CustomerName DESC;              -- return
 SELECT * FROM Customers ORDER BY CustomerName DESC LIMIT 3;
 SELECT DISTINCT salary FROM Employee ORDER BY salary DESC LIMIT 1 OFFSET 1;  -- returns the second highest salary from the Employee table by ordering the salaries in descending order and skipping the first record (OFFSET 1) and limiting the result to 1 record (LIMIT 1).
 
+-- con  catenate strings using concat() function
+SELECT EMP_Id , concat(firstname ,' ' , lastname) as full_name from emp_table
+ 
 SELECT CustomerName, Address + ', ' + PostalCode + ' ' + City + ', ' + Country AS Address FROM Customers;
 -- This query concatenates the Address fields into a single column named Address
 -- example output:
